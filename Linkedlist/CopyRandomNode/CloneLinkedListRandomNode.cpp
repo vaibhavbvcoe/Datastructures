@@ -6,21 +6,6 @@
 #include<iostream>
 using namespace std;
 
-class Node {
-public:
-    int val;
-    Node* next;
-    Node* random;
-    
-    Node(int _val) {
-        val = _val;
-        next = NULL;
-        random = NULL;
-    }
-};
-
-
-
 struct node
 {
 	int m_data;
@@ -116,43 +101,6 @@ node *clone()
 	return cloned;
 }
 
-Node* copyRandomList(Node* head)
-{
-	Node *ptr =  head;
-
-	while(ptr)
-	{
-		Node *tempnode = ptr->next;
-		ptr->next = new Node(ptr->val);
-		ptr->random=NULL;
-		ptr->next->next = tempnode;
-	}
-
-
-
-	ptr = head;
-
-	while(ptr)
-	{
-		ptr->next->random = ptr->random->next;
-	}
-
-
-
-	ptr = head;
-	Node *duplicateHead = head->next;
-
-	while(ptr && duplicateHead)
-	{
-		ptr->next = ptr->next?ptr->next->next:ptr->next;
-		duplicateHead->next = duplicateHead->next ? duplicateHead->next->next:duplicateHead->next;
-
-	}
-
-	return duplicateHead;
-
-
-}
 
 int _tmain(int argc, _TCHAR* argv[])
 {
